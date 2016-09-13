@@ -11,7 +11,8 @@ mappings = {
 }
 
 db_path = os.path.expanduser('~/inventory.sqlite')
-os.remove(db_path)
+if os.path.exists(db_path):
+    os.remove(db_path)
 conn = sqlite3.connect(db_path)
 cursor = conn.cursor()
 cursor.execute('''CREATE TABLE files (
